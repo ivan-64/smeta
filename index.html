@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>СМЕТА</title>
+    <!-- CDN для html2pdf.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <!-- Подключаем наш адаптивный CSS-файл из новой папки 'css' -->
+    <link rel="stylesheet" href="./css/adaptiv.css">
+</head>
+
+<body>
+    <!-- Заголовок с кнопкой-бургером -->
+    <header class="header">
+        <button class="burger" id="burgerBtn" aria-label="Открыть меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <!-- Навигационное меню -->
+    <nav class="main-nav" id="navMenu">
+        <ul>
+            <li><button id="addRowBtn">Добавить строку</button></li>
+            <li><button id="createNewDocBtn">Новый документ</button></li>
+            <li><button id="saveDocBtn">Сохранить</button></li>
+            <li>
+                <select id="openDocSelect">
+                    <option value="">Выбор документа</option>
+                </select>
+            </li>
+            <li><button id="deleteSelectedDocBtn">Удалить выбранный</button></li>
+            <li><button id="savePdfBtn">Сохранить как PDF</button></li>
+        </ul>
+    </nav>
+
+    <!-- Основной контейнер контента -->
+    <section class="w-full flex justify-center">
+        <div class="container" id="mainContent">
+            <table>
+                <caption>
+                    <h2 id="caption" contentEditable="true" suppressContentEditableWarning="true">Сметная стоимость</h2>
+                </caption>
+                <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>Наименование</th>
+                        <th>е.изм.</th>
+                        <th>Объём</th>
+                        <th>Цена</th>
+                        <th>Сумма</th>
+                        <th>Заметки</th>
+                        <th class="delete-column-header"></th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- Строки таблицы будут генерироваться JavaScript -->
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="5" style="text-align: right;">Общая сумма:</td>
+                        <td id="totalCost">0.00</td>
+                        <td colspan="2"></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </section>
+
+    <!-- Футер страницы -->
+    <footer>
+        <h4>Сделано в августе 2025 года</h4>
+    </footer>
+
+    <!-- Подключаем наш JavaScript-файл из новой папки 'js' -->
+    <script src="./js/script.js"></script>
+</body>
+
+</html>

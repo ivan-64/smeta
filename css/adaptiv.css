@@ -1,0 +1,541 @@
+/* Общие стили */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    /* Fallback цвет фона */
+    /* Путь к фоновому изображению. Теперь adaptiv.css находится в папке 'css',
+       поэтому для доступа к 'images' нужно подняться на один уровень (..) */
+    background-image: url('/public/images/forest-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #333;
+    overflow-x: hidden;
+    /* Предотвращаем горизонтальный скролл */
+}
+
+/* Заголовок с кнопкой-бургером */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    z-index: 10;
+}
+
+.burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 1px solid black;
+    /* Черный контур */
+    padding: 0;
+    margin-top: 20px;
+    /* Отступ сверху */
+    cursor: pointer;
+    z-index: 20;
+    border-radius: 0.25rem;
+    background-color: #fff;
+}
+
+.burger:focus {
+    outline: none;
+}
+
+.burger span {
+    width: 80%;
+    height: 3px;
+    background: black;
+    /* Черные линии */
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+    margin: 0 auto;
+}
+
+.burger.active span:nth-child(1) {
+    transform: rotate(45deg);
+}
+
+.burger.active span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+.burger.active span:nth-child(3) {
+    transform: rotate(-45deg);
+}
+
+/* Навигационное меню */
+.main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 15;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.main-nav.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+}
+
+.main-nav ul li button,
+.main-nav ul li select {
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.25rem;
+    color: white;
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    cursor: pointer;
+    appearance: none;
+    /* Убираем стандартные стили select */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-align-last: center;
+    /* Выравнивание текста в select */
+}
+
+.main-nav ul li button:hover,
+.main-nav ul li select:hover {
+    background-color: white;
+    color: black;
+}
+
+.main-nav ul li select option {
+    background-color: white;
+    color: black;
+}
+
+section {
+    width: 100%;
+}
+
+/* Основной контейнер контента */
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    /* Белый с прозрачностью */
+    padding: 30px;
+    /* Отступ 30px */
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 96px;
+    /* Отступ сверху, чтобы не наезжать на бургер-меню */
+    width: 100%;
+    max-width: 900px;
+    /* Максимальная ширина */
+    margin-bottom: 40px;
+    /* Отступ снизу перед футером */
+    overflow-x: auto;
+    /* Горизонтальный скролл для таблицы на маленьких экранах */
+}
+
+/* Стили таблицы */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    /* min-width: 700px; */
+    /* Минимальная ширина таблицы для скролла */
+
+}
+
+
+caption {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+caption h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+th,
+td {
+    /* width: 1%; */
+    border: 1px solid #ddd;
+    /* padding-left: 5px; */
+    /* padding: 5px; */
+    text-align: center;
+    vertical-align: auto;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+thead th {
+    background-color: #e2e8f0;
+    /* bg-gray-200 */
+    color: #4a5568;
+    /* text-gray-700 */
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+tbody tr:hover {
+    background-color: #f8f8f8;
+    /* hover:bg-gray-50 */
+}
+
+/* Стили для редактируемых ячеек (contenteditable) */
+td[contenteditable="true"] {
+    outline: none;
+    cursor: text;
+    /* min-width: 50px; */
+}
+
+td[contenteditable="true"]:focus {
+    box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.5);
+    /* Пример синего кольца фокуса */
+}
+
+/*! НОВЫЕ СТИЛИ для input полей */
+/*! .table-input { */
+/* Удаляем width: 100%; чтобы позволить JS управлять шириной */
+padding: 0;
+/* Убираем внутренние отступы input, чтобы они не дублировали отступы td */
+margin: 0;
+/* Убираем внешние отступы input */
+border: none;
+/* Убираем стандартную рамку input */
+background: transparent;
+/* Делаем фон прозрачным */
+font-size: inherit;
+/* Наследуем размер шрифта от родительской ячейки */
+font-family: inherit;
+/* Наследуем шрифт */
+color: inherit;
+/* Наследуем цвет текста */
+outline: none;
+/* Убираем стандартный outline при фокусе */
+box-sizing: border-box;
+/* Учитываем padding и border в общей ширине */
+text-align: left;
+/* Выравнивание текста */
+min-width: 20px;
+/* Минимальная ширина для поля ввода, чтобы оно не исчезало */
+}
+
+.table-input:focus {
+    box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.5);
+    /* Синее кольцо фокуса, как у contenteditable */
+}
+
+
+/* Стили для ячеек стоимости */
+.cost {
+    font-weight: bold;
+    color: #2d3748;
+    /* Darker text for cost */
+}
+
+/* Футер */
+footer {
+    margin-top: auto;
+    /* Прижимает футер к низу */
+    margin-bottom: 2rem;
+    color: white;
+    font-size: 0.875rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Кнопка удаления */
+.delete-btn {
+    /* background-color: #ef4444; */
+    /* bg-red-500 */
+    color: red;
+    /* padding: 0.25rem 0.5rem; */
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.delete-btn:hover {
+    background-color: #dc2626;
+    /* darker red */
+}
+
+/* Стили для общей суммы */
+tfoot tr {
+    background-color: #f7fafc;
+    /* bg-gray-100 */
+    color: #2d3748;
+    /* text-gray-800 */
+    font-weight: bold;
+}
+
+/* Стили для ссылок в заметках */
+td a {
+    color: #2563eb;
+    /* blue-600 */
+    text-decoration: underline;
+}
+
+td a:hover {
+    color: #1d4ed8;
+    /* blue-700 */
+}
+
+/* Стили для печати (скрываем колонку "Действия") */
+@media print {
+
+    .delete-column-header,
+    .delete-column-cell {
+        display: none !important;
+    }
+
+    .container {
+        box-shadow: none;
+        background-color: white;
+    }
+
+    body {
+        background-image: none;
+        background-color: white;
+    }
+
+    .header,
+    .main-nav,
+    footer {
+        display: none;
+    }
+}
+
+/* --- Адаптивные стили --- */
+
+/* Для экранов шириной до 900px (большие планшеты, ноутбуки) */
+@media screen and (max-width: 1000px) {
+
+    /* Основной контейнер */
+    .container {
+        padding: 20px;
+        /* Уменьшаем внутренние отступы */
+        max-width: 90%;
+        /* Позволяем контейнеру занимать всю доступную ширину */
+    }
+
+    /* Таблица */
+    table {
+        min-width: 600px;
+        /* Уменьшаем минимальную ширину таблицы, чтобы она лучше помещалась */
+    }
+
+    /* Заголовок таблицы */
+    caption h2 {
+        font-size: 1.4rem;
+        /* Немного уменьшаем размер шрифта заголовка */
+    }
+
+    /* Ячейки таблицы */
+    th,
+    td {
+        /* padding: 7px; */
+        /* Уменьшаем отступы в ячейках */
+        font-size: 0.95em;
+        /* Немного уменьшаем размер шрифта */
+    }
+}
+
+/* Для экранов шириной до 600px (маленькие планшеты, большие смартфоны) */
+@media screen and (max-width: 600px) {
+
+    /* Основной контейнер */
+    .container {
+        width: 90%;
+        padding: 15px;
+        /* Еще уменьшаем отступы */
+        margin-top: 80px;
+        /* Корректируем верхний отступ, чтобы не перекрывать бургер-меню */
+    }
+
+    /* Таблица */
+    table {
+        min-width: 500px;
+        /* Еще уменьшаем минимальную ширину таблицы */
+    }
+
+    /* Заголовок таблицы */
+    caption h2 {
+        font-size: 1.2rem;
+        /* Уменьшаем размер шрифта заголовка */
+    }
+
+    /* Ячейки таблицы */
+    th,
+    td {
+        /* padding: 6px; */
+        /* Еще уменьшаем отступы в ячейках */
+        font-size: 0.9em;
+        /* Еще уменьшаем размер шрифта */
+    }
+
+    /* Бургер-кнопка */
+    .burger {
+        width: 35px;
+        height: 35px;
+        margin-top: 10px;
+        /* Корректируем размер и отступ */
+    }
+
+    .burger span {
+        height: 2px;
+        /* Делаем линии бургер-иконки тоньше */
+    }
+
+    /* Кнопки и выпадающий список в меню */
+    .main-nav ul li button,
+    .main-nav ul li select {
+        font-size: 1rem;
+        /* Уменьшаем размер шрифта */
+        padding: 0.6rem 1rem;
+        /* Уменьшаем отступы */
+    }
+}
+
+/* Для экранов шириной до 480px (большинство смартфонов) */
+@media screen and (max-width: 480px) {
+
+    /* Основной контейнер */
+    .container {
+        padding: 10px;
+        /* Еще уменьшаем отступы */
+        margin-top: 70px;
+        /* Корректируем верхний отступ */
+    }
+
+    /* Таблица */
+    table {
+        min-width: 400px;
+        /* Еще уменьшаем минимальную ширину таблицы */
+    }
+
+    /* Заголовок таблицы */
+    caption h2 {
+        font-size: 1.1rem;
+        /* Уменьшаем размер шрифта заголовка */
+    }
+
+    /* Ячейки таблицы */
+    th,
+    td {
+        /* padding: 4px; */
+        /* Еще уменьшаем отступы в ячейках */
+        font-size: 0.8em;
+        /* Еще уменьшаем размер шрифта */
+    }
+
+    /* Бургер-кнопка */
+    .burger {
+        width: 30px;
+        height: 30px;
+        margin-top: 5px;
+        /* Корректируем размер и отступ */
+    }
+
+    /* Кнопки и выпадающий список в меню */
+    .main-nav ul li button,
+    .main-nav ul li select {
+        font-size: 0.9rem;
+        /* Еще уменьшаем размер шрифта */
+        padding: 0.5rem 0.8rem;
+        /* Еще уменьшаем отступы */
+    }
+}
+
+/* Для экранов шириной до 360px (очень маленькие смартфоны) */
+@media screen and (max-width: 360px) {
+
+    /* Основной контейнер */
+    .container {
+        padding: 8px;
+        /* Минимальные отступы */
+        margin-top: 60px;
+        /* Корректируем верхний отступ */
+    }
+
+    /* Таблица */
+    table {
+        min-width: 320px;
+        /* Минимальная ширина таблицы для очень маленьких экранов */
+    }
+
+    /* Заголовок таблицы */
+    caption h2 {
+        font-size: 1rem;
+        /* Минимальный размер шрифта заголовка */
+    }
+
+    /* Ячейки таблицы */
+    th,
+    td {
+
+        /* padding: 3px; */
+        /* Минимальные отступы в ячейках */
+        font-size: 0.75em;
+        /* Минимальный размер шрифта */
+    }
+
+    /* Бургер-кнопка */
+    .burger {
+        width: 28px;
+        height: 28px;
+        margin-top: 5px;
+        /* Еще уменьшаем размер */
+    }
+
+    /* Кнопки и выпадающий список в меню */
+    .main-nav ul li button,
+    .main-nav ul li select {
+        font-size: 0.85rem;
+        /* Минимальный размер шрифта */
+        padding: 0.4rem 0.7rem;
+        /* Минимальные отступы */
+    }
+
+    /* Футер */
+    footer {
+        font-size: 0.75rem;
+        /* Уменьшаем размер шрифта футера */
+    }
+}
