@@ -11,7 +11,7 @@ body {
     /* Fallback цвет фона */
     /* Путь к фоновому изображению. Теперь adaptiv.css находится в папке 'css',
        поэтому для доступа к 'images' нужно подняться на один уровень (..) */
-    background-image: url('/public/images/forest-background.jpg');
+    background-image: url('https://github.com/ivan-64/smeta/blob/main/public/images/forest-background.jpg?raw=true');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
